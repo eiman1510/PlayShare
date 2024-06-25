@@ -1,0 +1,103 @@
+
+.col-md-9.col-lg-10.px-4{
+    background-image: url(bac.jpg);
+
+   /* background-color: blue; */
+}
+#pic{
+    /* background-image: url(bac2.jpg); */
+    height: 80vh;  
+    width: 50vw; 
+    /* border: solid 1px;   */
+    border-radius: 50%;  
+    display: inline-block;
+    position: relative;
+    top: 15%;
+    right: 70%;
+    left:20%;
+    bottom: 90%;
+}
+#but{
+    float: right;
+    position: absolute;
+    background-color: #d00e0e;
+    border-radius: 25px;
+    height: 35px;
+    width: 5vw;
+    border: 3px solid black;
+    left: 93%;
+    top: 4%;
+    font-style: italic;
+    box-sizing: border-box;
+    /* display: flex; */
+}
+.searchbar{
+    display: inline;
+}
+#but:hover{
+    background-color: green;
+    color: yellow;
+}
+#Enter{
+    /* float: right; */
+    margin: auto;
+    background-color: #ffdb58;
+    width: 74vw;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 7px;
+    border: 5px solid black;
+    border-radius: 29px;
+    /* margin-top: 3px; */
+    position: absolute;
+    /* left: 33px;  */
+    font-style: italic;
+    box-sizing: border-box;
+    position: relative;
+    top: 3%;
+}
+#Enter:focus{
+    background-color: #ffdb58;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    border: 5px solid black;
+    font-style: italic;
+    
+}
+
+/* Add this CSS at the end of your existing CSS file */
+
+/* Responsive adjustments */
+@media  (max-width: 991.98px) {
+    .col-md-9.col-lg-10.px-4 {
+        padding: 0; /* Remove padding */
+    }
+
+    #pic {
+        height: auto; /* Adjust height */
+        max-width: 100%; /* Adjust width */
+    }
+
+    #but {
+        width: 10vw; /* Adjust width */
+        left: 0; /* Align button to the left */
+        border-radius: 25px; /* Remove border radius */
+        top: auto; 
+        /* Reset top position */
+       left: 50%;
+
+    }
+
+    #Enter {
+        width: 100%; /* Adjust width */
+        left: 0; /* Align input to the left */
+        border-radius: 29px; 
+        top: auto; /* Reset top position */
+    }
+}
+
+@media (max-width: 767.98px) {
+    .searchbar {
+        text-align: center; /* Center align search bar */
+    }
+}

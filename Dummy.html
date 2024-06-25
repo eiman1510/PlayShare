@@ -1,0 +1,186 @@
+<!--Description-->
+<!-- Ctrl+/ = Comment shortcut -->
+<!DOCTYPE html> <!--Identity of Document -->
+<html lang="en"> <!--Opening tag telling that the doc is going to be in english language-->
+<head>
+    <meta charset="UTF-8"> <!--Meta tags containing data about data which going to be in head-->
+    <!-- Meta tags help the browser to display your website when it is searched or to display logo in the tab display ets -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="--Description--" content="This is --Description--"> <!--Tag allows to write any kind of description for page-->
+    <meta name="keyword" content="html,description"> <!--The words which would be searched for our webpage to be displayed-->
+    <title>Document</title> <!--Tille for web Page-->
+    <!--Note: Meta tags can be used to link css sheets and javascript sheets-->
+    <link rel="stylesheet" href="style.css"> <!--Inorder to link css file write the name of file in href-->
+    <!-- this is how you include javascript -->
+    <script src=""></script> <!--Write name of file in src-->
+</head>
+<body> <!--Would contain the main content of the page-->
+    <h1>Heading 1</h1>
+    <h2>Heading 2</h2>
+    <h3>Heading 3</h3>
+    <h4>Heading 4</h4>
+    <h5>Heading 5</h5>
+    <h6>Heading 6</h6> <!--6 heading tags-->
+    <p>Paragraph Tag</p>
+    <p>Lorem ipsum dolor sit.</p>
+    <p>Lorem ipsum dolor <strong>This is strong</strong> <br> <hr> <em>This is emphasis</em> sit amet consectetur.</p>
+    <!-- hr means horizontal rule hence creates a line -->
+    <!-- br means break hence after br lines move to next line -->
+    <!-- strong tag bolds -- we could use bold tag as well <b></b> -->
+    <!-- emphasis tag italic we could use Italic tag as well <i></i> -->
+    <!-- Lorem number without any space to insert that amount of words (random words) ed lorem23 -->
+    <!-- p*4 to insert 4 paragraph tags -->
+    <!-- Alt+z or settings > command pallete > toggle wrap words to keeps words in the same page of ide  -->
+    <!-- ctrl+enter to move to next line -->
+    <!-- href tag helps in inserting hyperlink-- Target attribute allows the page to be opened in a new tab -->
+    <!-- Press alt and then click wherever yo want to write and then write simultaneously on multiple lines -->
+    <a href="https://google.com" target="_blank">Go to google</a><br>
+    <a href="https://instagram.com" target="_blank">Go to instagram</a><br>
+    <a href="https://facebook.com" target="_blank">Go to facebook</a><br>
+    <a href="https://linkedin.com" target="_blank">Go to linkedin</a><br>
+    <!-- mulitple webpages could be linked through a href by going in target="/filename" -->
+    <!-- alt text displayed as source file not in local folder -->
+    <img src="yo.jpg" alt="not loaded">
+    <!-- note:Address of image could be online as well -->
+    <!-- width and height attributes can be used but css should be used for This -->
+    <img src="https://plus.unsplash.com/premium_photo-1678167657994-5b96138b6abb?q=80&w=1938&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="not loaded" width="200" height="200">
+    <h1>Tables and Lists</h1>
+    <!-- types should be used for unordered list for listing methods (disc square circle options) -->
+    <ul type="square">
+        <li>This is first item of unordered list</li>
+        <li>This is Second item of unordered list</li>
+        <li> Yo <br>
+            <ol>
+                <li>Nested list 1</li>
+                <li>Nested list 2</li>
+            </ol>
+        </li>
+        <li>This is Third item of unordered list</li>
+        <li>This is Fourth item of unordered list</li>
+    </ul>
+    <!-- types should be used for ordered list for listing methods -->
+    <ol type="A"> 
+        <li>This is first item of ordered list</li>
+        <li>This is Second item of ordered list</li>
+        <li>This is Third item of ordered list</li>
+        <li>This is Fourth item of ordered list</li>
+    </ol>
+    <!-- Table -->
+    <table>
+        <thead>
+                <tr>
+                    <!-- Table attributes -->
+                    <th> Name </th>   
+                    <th> Role </th>
+                </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Taha</td>   <!--Data entered in order of Attribute-->
+                <td>Coder</td>
+            </tr>
+            <tr>
+                <td>Mahad</td>
+                <td>Coder</td>
+            </tr>
+            <tr>
+                <td>Shaheer</td>
+                <td>Coder</td>
+            </tr>
+
+        </tbody>
+    </table>
+    <h2>Forms:</h2>
+    <form action="x.js">
+        <!-- action attribute requires a file name to which data will be given -->
+        <!-- instead of using br tag it would be preferable to create divisions uding div tag inorder to seperate them on different lines -->
+        <label for="name">Name</label> <!--in for the idea of iput should be there and the advantage of label is that when label is clicked upon it automatically places the cursor in input-->
+        
+        <div>
+             <input type="text" id="name">
+        </div>
+        <br>  <!--Not recommended css use recommended-->
+        <div>
+            Role: <input type="text">
+        </div>
+        <br>
+        <div>
+            Email: <input type="email" name="xyz">  <!--Name attribute identifies the tag bu that name in backhand-->
+        </div>
+        <br>
+        <div>
+            Salary: <input type="number" name="v1" >   <!--Only expects numbers and e letter -->
+        </div>
+        <br>
+        <br>
+        <div>
+           <label for="select"> Choose </label>
+           <select name="select" id="select">
+            <option value="H">1</option>
+            <option value="H2" selected>2</option> <!--selected same job as checked-->
+            <option value="H1">3</option>
+           </select>
+        </div>
+        <br>
+        <label for="u">Yo</label>
+        <div>
+            Checkbox: <input type="checkbox" name="yo" checked id="u"> <!--Checked by defaults checks the box-->
+        </div>
+        <br>
+        <div>
+            Textarea: <br><textarea name="W"  cols="3" rows="3"></textarea>
+        </div>
+        <br>
+        <div>
+            Radiobutton: x <input type="radio" name="0" > y <input type="radio" name="0" >  <!--Name must be same if you want only one checkbox to be selected-->
+        </div>
+        <br>
+        <div>
+            <input type="submit" value="Submit"> <!--To create submit button-->
+            <input type="reset" value="Reset"> <!--Resets the forms-->
+        </div>
+        
+        
+    </form>
+
+    <!-- Inline and block element are two types of element in which a block element takes a complete a line for eg paragraph tag is for block element and span tag is for inline element -->
+    <span>This is span 1 </span>
+    <span>This is span 2</span>
+    <p>This is Paragraph 1</p>
+    <p>This is Paragraph 2</p>
+
+    <h3>Ids And Classes</h3>
+    <!-- Use of id is to keep an identifier of the elements and the later on use that identifier in styling -->
+    <!-- class is basically the datatype and id is the object -->
+    <!-- Note: One id can have mulitple Classes however id is always unique -->
+    <!-- . is for class and # is for id -->
+    <!-- classes are defined in css  -->
+    <div id="Mainbox" class="redbg">
+        This is main box
+    </div>
+
+    <h4>HTML Entities</h4>
+    <!-- HTML entities are used for reserved words printing -->
+    <div class="myClass">
+        <p>This is paragraph        without space</p>
+        <p>This is paragraph  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; with more than 1  space</p>
+        <!-- If we want to write <p> on our webpage then we use &lt;p&gt; -->
+        <p>This is &lt;p&gt; tag</p>
+        <p>This pound symbol &pound;</p>
+        <p>This copyright symbol &copy;;</p>
+    </div>
+
+    <h5>Semantic tags</h5>
+    <header>Yo</header>
+    <details>
+        <!-- <summary>This is Summary tag allowing the option of drop down etc </summary> -->
+        <!-- If you dont want summary you delete it -->
+        123
+        456
+        789
+    </details>
+    <footer>Footer</footer>
+    <!-- Semantic tags are used to divide things into parts eg header body etc write semantic tags on google for the list -->
+
+</body>
+</html> <!--Closing tag-->

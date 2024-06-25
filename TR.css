@@ -1,0 +1,99 @@
+.Outer-Layer {
+  background-color: #ffdb58;
+  height: 92%;
+  width: 50%;
+  position: relative;
+  border-radius: 25%;
+  border-width: 5%;
+  border-color: black;
+  border: 2px solid;
+  top: 4%;
+  left: 25%;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#heading {
+  text-align: center;
+  font-weight: bold;
+  font-style: oblique;
+  text-decoration: underline;
+  position: relative;
+  top: 10%;
+}
+
+.f1 {
+  position: relative;
+  top: 20%;
+}
+
+#submit {
+  background-color: #d00e0e;
+  border-radius: 25px;
+  height: 35px;
+  width: 5vw;
+  border: 3px solid black;
+  font-style: italic;
+  box-sizing: border-box;
+  position: relative;
+  margin: auto;
+}
+
+#submit:hover {
+  background-color: green;
+  color: yellow;
+}
+
+#N1 {
+  width: 35%;
+}
+
+#date {
+  position: relative;
+  right: 5%;
+}
+
+#Sports {
+  position: relative;
+  right: 10%;
+}
+
+#Participants {
+  position: relative;
+  right: 6%;
+}
+
+@media (max-width: 768px) {
+  .Outer-Layer {
+      width: 80%;
+      left: 10%;
+  }
+
+  .f1 {
+      text-align: center;
+  }
+
+  #submit {
+      width: 10vw;
+      left: 0;
+      border-radius: 25px;
+      top: auto;
+      left: 50%;
+  }
+
+  #N1 {
+      width: 90%;
+  }
+
+  #date,
+  #Sports,
+  #Participants {
+      position: static;
+      margin-top: 20px;
+  }
+
+  #duration {
+      position: relative;
+      right: 5%;
+  }
+}

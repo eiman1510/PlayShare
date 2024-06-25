@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Custom styles -->
+    <style>
+        .menu-button {
+            color: dodgerblue;
+            width: 170px;
+            border-radius: 5px; /* Rounded corners */
+            cursor: pointer; /* Cursor style */
+            transition: background-color 0.3s, text-shadow 0.3s ease; /* Smooth transition */
+        }
+
+
+        /* styling to only apply when the menu is open*/
+        .sidebar:not(.collapsed) .menu-button:hover {
+            background-color: lightblue;
+            text-shadow: 0 0 3px rgba(102, 204, 255, 0.8)
+        }
+
+
+
+        .sidebar:not(.collapsed) .menu-button {
+            box-shadow: 0 0 30px rgb(0, 0, 0,0.3);
+        }
+
+        .sidebar .collapsed .menu-button {
+            box-shadow: none;
+        }
+
+        .collapsed .menu-button .fa-fw {
+            display: inline !important;
+        }
+
+        /* Adjusting height for the sidebar */
+        .sidebar {
+            height: 100vh; /* 100% of the viewport height */
+            max-width: 200px;
+        }
+
+        .collapsed {
+            max-width: 65px;
+        }
+
+        .collapsed .nav-item a.nav-link .link-text {
+            display: none;
+        }
+
+        .collapsed .link-text.menu-heading {
+            display: none;
+        }
+
+        .collapsed .nav-item a.nav-link .fa-fw {
+            /* Adjust the display property to show the icons */
+            display: inline;
+        }
+
+        .bg-nav-light {
+            background-color: #fff;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .bg-nav-light-left {
+            background-color: #fff;
+            border-right: 1px solid #ccc;
+        }
+
+        #btntogglemenu {
+            margin-left: 10px;
+            border-right: 1px solid #eee;
+            padding-right: 24px;
+        }
+
+        .brand-border {
+            border-left: 1px solid #ccc;
+        }
+
+        .icon-circle {
+            height: 60px;
+            width: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .count-pill {
+            width: 60px;
+            height: 23px;
+            border-radius: 20px;
+            margin-top: -10px;
+            text-align: center;
+            color: white;
+        }
+
+        .top-menu-buttons {
+            border-radius: 5px;
+            margin-right: 10px;
+            margin-left: 10px;
+            width: 95px;
+            cursor: pointer; /* Cursor style */
+            transition: background-color 0.3s; /* Smooth transition */
+            box-shadow: 0 0 30px rgb(0, 0, 0,0.2);
+        }
+
+            /* Hover effect */
+            .top-menu-buttons:hover {
+                background-color: lightblue; /* Light blue background color */
+            }
+
+        .card-css{
+            border-radius: 25px;
+            
+            box-shadow: 0 4px 8px 2px rgba(0, 0, 0, 0.2);
+            position: relative;
+
+
+        }
+        .solid-section {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 25%; /* Adjust height as needed */
+            background-color: #183873; /* Set the background color of the solid section */
+            border-top-right-radius: 25px;
+                    border-top-left-radius: 25px;
+        }
+
+        .rounded-image {
+            position: absolute;
+            top: 25%; /* Position the image below the solid section */
+            left: 50%;
+            transform: translate(-50%, -50%); /* Center the image horizontally and vertically */
+            width: 100px; /* Adjust image width as needed */
+            height: 100px; /* Adjust image height as needed */
+            border-radius: 50%; /* Make the image round */
+        }
+
+        .remaining-section{
+            position: relative;
+            top: 27%;
+
+        }
+
+        .contact-section {
+            background-color: #e0e5ef; /* Background color for the contact section */
+            border-radius: 10px; /* Rounded corners */
+            padding: 15px; /* Add padding for spacing */
+            margin-bottom: 15px; /* Add margin to separate it from other content */
+        }
+
+        .contact-section h6 {
+            margin-bottom: 10px; /* Add margin below the heading */
+        }
+
+        .contact-list {
+            list-style-type: none; /* Remove default list styles */
+            padding: 0;
+        }
+
+        .contact-list li {
+            margin-bottom: 8px; /* Add margin between list items */
+        }
+
+        .contact-list li i {
+            margin-right: 8px; /* Add margin between icon and text */
+        }
+
+        .history-button {
+            background-color: white;
+            color: #32579c;
+            border: 2px solid #32579c;
+            height: 35px;
+            border-radius: 7px;
+            margin-top: 30px;
+            padding-top: 3px;
+            text-align: center;
+            text-decoration: none;
+            transition: color 0.3s, background-color 0.3s;
+        }
+
+        .history-button:hover {
+            color: white;
+            background-color: #32579c;
+        }
+
+        /* The Modal (background) */
+        .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1000; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 40%;
+        border-radius: 15px;
+        }
+
+        /* Close Button */
+        .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 12px 16px;
+        background-color: #fff;
+        border-radius: 50%;
+        }
+
+        .close:hover,
+        .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+        }
+        
+ .main_content {
+        background-image: url('/calBack0.png'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+        background-size: cover; /* Cover the entire container */
+        /* background-position: center; Center the image */
+        height: 100%; /* Set the height of the container to full viewport height */
+        width: 120%; /* Set the width of the container to 100% */
+        overflow: hidden; /* Ensure no overflowing content affects the layout */
+    }
+
+        
+
+
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server" >
+    </asp:ContentPlaceHolder>
+</head>
+<body style="background-color: whitesmoke;">
+    <form id="form1" runat="server" action="" method="get">
+        <nav class="navbar navbar-expand-lg navbar-light bg-nav-light py-0" style="background-color: #173367;">
+            <a href="javascript:" class="text-secondary" id="btntogglemenu">
+                <i class="fa fa-bars text-secondary"></i>
+            </a>
+            <a class="navbar-brand brand-border" href="#">
+                <img src="/Logo2.svg" class="ml-2 rounded-circle" style="height: 65px; background-color: white;" />
+                <h1 class="d-inline" style="color: white">PlayShare</h1>
+            </a>
+
+            <!-- Toggle button for small screens -->
+            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="fa fa-bars" style="color: dodgerblue;"></span>
+            </button> -->
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="ml-auto">
+                    <ul class="navbar-nav">
+                        <li class="nav-item  top-menu-buttons" >
+                            <!-- Profile icon button -->
+                            <a class="nav-link text-primary" href="http://localhost:3000/account" role="button">
+                                <i class="fas fa-user-circle"></i>&nbsp;&nbsp;Profile
+                            </a>
+                        </li>
+                        <li class="nav-item text-primary top-menu-buttons">
+                            <a class="nav-link text-primary" href="ratepage.html" role="button">
+                                <i class="fas fa-sign-out-alt fa-fw"></i>&nbsp;&nbsp;Logout
+                                
+
+                            </a>
+                        </li>
+                        <!-- Add more navbar links as needed -->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <div class="row">
+                <!-- Sidebar -->
+                <nav class="col-md-2 d-none d-md-block bg-nav-light-left sidebar" style="background-color: #173367;">
+                    <div class="sidebar-sticky">
+                        <br />
+                        <span class="link-text menu-heading"
+                            style="color: white; font-size: 30px; font-weight: normal;">Menu</span>
+                        <br />
+                        <br />
+                        <ul class="nav flex-column  ">
+                            <li class="nav-item pt-2 menu-button ">
+                                <a class="nav-link active text-body  " href="http://localhost:3000/tor">
+                                    <i class="fas fa-user fa-fw shadow-lg no-shadow" style="color: dodgerblue"></i>
+
+                                    <span class="link-text shadow-lg no-shadow"
+                                        style="color: dodgerblue">&nbsp;&nbsp;&nbsp;Torney match</span></a>
+                            </li>
+                            <br />
+
+
+
+                            <!-- Add more sidebar links as needed -->
+                            <li class="nav-item pt-2 menu-button ">
+                                <a class="nav-link active text-body  " href="http://localhost:3000/Search">
+                                    <i class="fas fa-search fa-fw shadow-lg no-shadow" style="color: dodgerblue"></i>
+
+                                    <span class="link-text shadow-lg no-shadow"
+                                        style="color: dodgerblue">&nbsp;&nbsp;&nbsp;Search </span></a>
+                            </li>
+                            <br />
+
+                            <li class="nav-item pt-2 menu-button ">
+                                <a class="nav-link active text-body  " href="http://localhost:3000/TournamentReg">
+                                    <i class="fas fa-user-plus fa-fw shadow-lg no-shadow" style="color: dodgerblue"></i>
+
+                                    <span class="link-text shadow-lg no-shadow"
+                                        style="color: dodgerblue">&nbsp;&nbsp;&nbsp;Register</span></a>
+                            </li>
+                            <br />
+                            <li class="nav-item pt-2 menu-button ">
+                                <a class="nav-link active text-body " href="http://localhost:3000/SetMatches1">
+                                    <i class="fas fa-user-plus fa-fw shadow-lg no-shadow" style="color: dodgerblue"></i>
+
+                                    <span class="link-text " style="color: dodgerblue">&nbsp;&nbsp;&nbsp;Set Matches </span></a>
+                            </li>
+                            <br />
+
+                            <li class="nav-item pt-2 menu-button ">
+                                <a class="nav-link active text-body " href="http://localhost:3000/feed">
+                                    <i class="fas fa-book-open fa-fw shadow-lg no-shadow" style="color: dodgerblue"></i>
+
+                                    <span class="link-text shadow-lg no-shadow"
+                                        style="color: dodgerblue">&nbsp;&nbsp;&nbsp;News feed </span></a>
+                            </li>
+                            <br />
+
+                            <li class="nav-item pt-2 menu-button ">
+                                <a class="nav-link active text-body  " href="calender.html">
+                                    <i class="fas fa-calendar-alt fa-fw shadow-lg no-shadow"
+                                        style="color: dodgerblue"></i>
+
+                                    <span class="link-text shadow-lg no-shadow"
+                                        style="color: dodgerblue">&nbsp;&nbsp;&nbsp;Calendar </span></a>
+                            </li>
+                            <br />
+
+                            <li class="nav-item pt-2 menu-button ">
+                                <a class="nav-link active text-body  " href="http://localhost:3000/rewards">
+                                    <i class="fas fa-trophy fa-fw shadow-lg no-shadow" style="color: dodgerblue"></i>
+
+                                    <span class="link-text shadow-lg no-shadow"
+                                        style="color: dodgerblue">&nbsp;&nbsp;&nbsp;Rewards </span></a>
+                            </li>
+                            <br />
+                            <li class="nav-item pt-2 menu-button ">
+                                <a class="nav-link active text-body  " href="http://localhost:3000/pending">
+                                    <i class="fas fa-question-circle fa-fw shadow-lg no-shadow"
+                                        style="color: dodgerblue"></i>
+
+                                    <span class="link-text shadow-lg no-shadow"
+                                        style="color: dodgerblue">&nbsp;&nbsp;&nbsp;Pending </span></a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </nav>
+
+                <!-- Main Content -->
+                <main role="main" class=" main_content col-md-9  col-lg-10 px-4 d-flex justify-content-center align-items-center">
+                    <!-- Your main content goes here -->
+                   <!-- profile Card for player profile to be displayed-->
+                   <div class="card card-css" style="width: 31rem; height: 39rem; margin-top: 1% ;">
+                    <div class="solid-section">
+                        
+                    </div>
+                    <img class="rounded-image" src="/profile.jpg" alt="profile Image">
+                    
+                    <div class="card-body">
+                        
+                    <div class="remaining-section">
+                      <h2 class="card-title " id="playerName"><%= r1[0].pname %></h2>
+                      <p class="card-text ">
+                        <h6>Sport Name</h6>
+                        <p>
+                            <%= r1[0].sport_name %>
+                        </p>
+                        <h6>Team Name</h6>
+                        <p>
+                            <%= r1[0].team_name %>
+                        </p> 
+                        <div class="contact-section">
+                            <h6>Contact Information</h6>
+                            <ul class="contact-list">
+                                
+                                <li id="contactNumber"><i class="fas fa-phone" style="color: #32579c;"></i>  <%= r1[0].contactnumber %></li>
+                                <li><i class="fa fa-envelope" aria-hidden="true" style="color: #32579c;"></i> <%= r1[0].email %></li>
+                                <!-- Add more contact information as needed -->
+                            </ul>
+                        </div>
+                        <a role="button" class="history-button  btn-block active" aria-pressed="true">View Player History</a>
+                        <div id="myModal" class="modal">
+                            <div class="modal-content">
+                              <span class="close">&times;</span>
+                              <h2>Past Matches</h2>
+                              <div class="match-details">
+                                <table class="table table-bordered">
+                                  <thead>
+                                    <tr>
+                                        <th>Match Type</th>
+                                        <th>Time of Match</th>
+                                        <th>Date of Match</th>
+                                        <th>Field of Match</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    <% for (let i = 1; i < r1.length; i++) { %>
+                                      <tr>
+                                        <td><%= r1[i].MatchTypeName %></td>
+                                        <td><%= r1[i].TimeOfMatch %></td>
+                                        <td><%= r1[i].DateofMatch %></td>
+                                        <td><%= r1[i].FieldName %></td>
+                                      </tr>
+                                    <% } %>
+                                  </tbody>
+                                </table>
+                              </div>
+                            </div>
+                          </div>
+                     </p>
+                    </div>
+                </div>
+            </div>  
+            </main>
+        </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer ms-auto  bg-light" style="height: 8px">
+            <div class="container">
+                <img src="/Logo2.svg" class="ml-2 rounded-circle" style="height: 65px; background-color: white;" />
+                <span class="link-text" style="color: dodgerblue; font-weight: 400;">Copyright &copy; 2024. All rights reserved. Powered by Team PlayShare
+                <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 <a href="privacy policy.html" style="color: dodgerblue; font-weight: 500">Terms of use & Privacy Policy</a>
+                </span>
+            </div>
+        </footer>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Include Popper.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.10.2/umd/popper.min.js"></script>
+    <!-- Include Bootstrap's Bundle file which includes Popper.js -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        $("#btntogglemenu").click(function () {
+            $(".sidebar").toggleClass("collapsed ");
+        });
+
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.querySelector(".history-button");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        btn.onclick = function() {
+        modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+        modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+        }
+            
+
+       
+    </script>
+</body>
+</html>

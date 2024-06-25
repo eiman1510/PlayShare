@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+
+<html>
+
+<head runat="server">
+    <title>Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles -->
+    <style>
+        .menu-button {
+            color: dodgerblue;
+            width: 170px;
+            border-radius: 5px;
+            /* Rounded corners */
+            cursor: pointer;
+            /* Cursor style */
+            transition: background-color 0.3s, text-shadow 0.3s ease;
+            /* Smooth transition */
+        }
+
+
+        /* styling to only apply when the menu is open*/
+        .sidebar:not(.collapsed) .menu-button:hover {
+            background-color: lightblue;
+            text-shadow: 0 0 3px rgba(102, 204, 255, 0.8)
+        }
+
+
+
+        .sidebar:not(.collapsed) .menu-button {
+            box-shadow: 0 0 30px rgb(0, 0, 0, 0.3);
+        }
+
+        .sidebar .collapsed .menu-button {
+            box-shadow: none;
+        }
+
+        .collapsed .menu-button .fa-fw {
+            display: inline !important;
+        }
+
+
+
+
+        /* Adjusting height for the sidebar */
+        .sidebar {
+            height: 100vh;
+            /* 100% of the viewport height */
+            max-width: 200px;
+        }
+
+        .collapsed {
+            max-width: 65px;
+        }
+
+        .collapsed .nav-item a.nav-link .link-text {
+            display: none;
+        }
+
+        .collapsed .link-text.menu-heading {
+            display: none;
+        }
+
+        .collapsed .nav-item a.nav-link .fa-fw {
+            /* Adjust the display property to show the icons */
+            display: inline;
+        }
+
+        .bg-nav-light {
+            background-color: #fff;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .bg-nav-light-left {
+            background-color: #fff;
+            border-right: 1px solid #ccc;
+        }
+
+        #btntogglemenu {
+            margin-left: 10px;
+            border-right: 1px solid #eee;
+            padding-right: 24px;
+        }
+
+        .brand-border {
+            border-left: 1px solid #ccc;
+        }
+
+        .icon-circle {
+            height: 60px;
+            width: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .count-pill {
+            width: 60px;
+            height: 23px;
+            border-radius: 20px;
+            margin-top: -10px;
+            text-align: center;
+            color: white;
+        }
+
+        .top-menu-buttons {
+            border-radius: 5px;
+            margin-right: 10px;
+            margin-left: 10px;
+            width: 95px;
+            cursor: pointer;
+            /* Cursor style */
+            transition: background-color 0.3s;
+            /* Smooth transition */
+            box-shadow: 0 0 30px rgb(0, 0, 0, 0.2);
+        }
+
+        /* Hover effect */
+        .top-menu-buttons:hover {
+            background-color: lightblue;
+            /* Light blue background color */
+        }
+
+        body {
+            background-image: url("calBack0.png");
+            background-repeat: no-repeat;
+            background-size: cover;
+
+        }
+
+        .container-fluid1 {
+
+            font-family: "arial", sans-serif;
+            justify-content: center;
+            font-style: italic;
+            /* font-weight: bold; */
+            text-align: center;
+            width: 65%;
+            height: 500%;
+            margin-top: 4%;
+            font-size: 20px;
+            margin-left: 8%;
+            /* padding:10%; */
+            /* box-shadow: 0 0 14px rgba(0, 0, 0, 0.5); */
+
+
+        }
+
+        .custom-container {
+            font-family: "arial", sans-serif;
+            font-style: italic;
+            font-weight: bold;
+            text-align: center;
+            width: 75%;
+            height: 80%;
+            margin-left: 2%;
+            margin-top: 2%;
+            padding: 1%;
+            box-shadow: 0 0 14px rgba(0, 0, 0, 0.5);
+
+        }
+
+
+        .matches {
+            background-color: silver;
+            background-image: url(mat.png);
+            background-repeat: no-repeat;
+            background-position: left;
+            background-size: 20%;
+
+            font-size: 40px;
+            text-align: center;
+            color: #173367;
+        }
+
+        .tour {
+            background-color: #173367;
+            background-image: url(tour.png);
+            background-repeat: no-repeat;
+            background-position: left;
+            background-size: 20%;
+
+            font-size: 40px;
+            text-align: center;
+            color: silver;
+        }
+
+        .cal {
+            background-color: #173367;
+            background-image: url(cal.png);
+            background-repeat: no-repeat;
+            background-position: left;
+            background-size: 20%;
+
+            font-size: 40px;
+            text-align: center;
+            color: silver;
+        }
+
+        .btn {
+
+            /* margin-left: 10%; */
+            cursor: pointer;
+            background-color: black;
+            position: relative;
+            font-size: 17px;
+            color: white;
+            padding: 1% 2%;
+            border-radius: 15px;
+        }
+
+        select {
+            /* margin-left: 9%; */
+            position: center;
+            padding: 15px;
+            width: 270px;
+            border: none;
+            background-color: white;
+            color: black;
+            font-size: large;
+            left: 20px;
+            border: 3px solid black;
+        }
+
+
+
+        @media (max-width: 768px) {
+            .custom-container {
+                font-size: 16px;
+                /* Reduce font size */
+                padding: 1%;
+                /* Adjust padding */
+            }
+
+            .btn {
+                padding: 2% 4%;
+                /* Adjust button padding */
+            }
+        }
+
+        /* Reducing font size for smaller screens */
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+        }
+
+        /* Adjusting padding for smaller screens */
+        @media (max-width: 768px) {
+            .custom-container {
+                padding: 1%;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            /* Adjust styles for smaller screens */
+            .custom-container {
+                width: 95%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+
+    <!-- Bootstrap JavaScript and dependencies -->
+
+
+</head>
+
+<body>
+    <form id="form1" runat="server" method="POST">
+        <nav class="navbar navbar-expand-lg navbar-light bg-nav-light py-0" style="background-color: #173367;">
+            <a href="javascript:" class="text-secondary" id="btntogglemenu">
+                <i class="fa fa-bars text-secondary"></i>
+            </a>
+            <a class="navbar-brand brand-border" href="#">
+                <img src="Logo2.svg" class="ml-2 rounded-circle" style="height: 65px; background-color: white;" />
+                <h1 class="d-inline" style="color: white">PlayShare</h1>
+            </a>
+
+            <!-- Toggle button for small screens -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="fa fa-bars" style="color: dodgerblue;"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="ms-auto">
+                    <ul class="navbar-nav ">
+                        <li class="nav-item  top-menu-buttons" style="margin-left: 950px">
+                            <!-- Profile icon button -->
+                            <a class="nav-link text-primary" href="http://localhost:3000/account" role="button">
+                                <i class="fas fa-user-circle"></i>&nbsp;&nbsp;Profile
+                            </a>
+                        </li>
+                        <li class="nav-item text-primary top-menu-buttons">
+                            <a class="nav-link text-primary" href="ratepage.html" role="button">
+                                <i class="fas fa-sign-out-alt fa-fw"></i>&nbsp;&nbsp;Logout
+
+
+                            </a>
+                        </li>
+                        <!-- Add more navbar links as needed -->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <div class="row">
+
+                <!-- Sidebar -->
+                <nav class="col-md-2 d-none d-md-block bg-nav-light-left sidebar" style="background-color: #173367;">
+                    <div class="sidebar-sticky">
+                        <br />
+                        <span class="link-text menu-heading"
+                            style="color: white; font-size: 30px; font-weight: normal;">Menu</span>
+                        <br />
+                        <br />
+                        <ul class="nav flex-column  ">
+                            <li class="nav-item pt-2 menu-button ">
+                                <a class="nav-link active text-body  " href="http://localhost:3000/tor">
+                                    <i class="fas fa-user fa-fw shadow-lg no-shadow" style="color: dodgerblue"></i>
+
+                                    <span class="link-text shadow-lg no-shadow"
+                                        style="color: dodgerblue">&nbsp;&nbsp;&nbsp;Torney match</span></a>
+                            </li>
+                            <br />
+
+
+
+                            <!-- Add more sidebar links as needed -->
+                            <li class="nav-item pt-2 menu-button ">
+                                <a class="nav-link active text-body  " href="http://localhost:3000/Search">
+                                    <i class="fas fa-search fa-fw shadow-lg no-shadow" style="color: dodgerblue"></i>
+
+                                    <span class="link-text shadow-lg no-shadow"
+                                        style="color: dodgerblue">&nbsp;&nbsp;&nbsp;Search </span></a>
+                            </li>
+                            <br />
+
+                            <li class="nav-item pt-2 menu-button ">
+                                <a class="nav-link active text-body  " href="http://localhost:3000/TournamentReg">
+                                    <i class="fas fa-user-plus fa-fw shadow-lg no-shadow" style="color: dodgerblue"></i>
+
+                                    <span class="link-text shadow-lg no-shadow"
+                                        style="color: dodgerblue">&nbsp;&nbsp;&nbsp;Register</span></a>
+                            </li>
+                            <br />
+                            <li class="nav-item pt-2 menu-button ">
+                                <a class="nav-link active text-body " href="http://localhost:3000/SetMatches1">
+                                    <i class="fas fa-user-plus fa-fw shadow-lg no-shadow" style="color: dodgerblue"></i>
+
+                                    <span class="link-text " style="color: dodgerblue">&nbsp;&nbsp;&nbsp;Set Matches
+                                    </span></a>
+                            </li>
+                            <br />
+
+                            <li class="nav-item pt-2 menu-button ">
+                                <a class="nav-link active text-body " href="http://localhost:3000/feed">
+                                    <i class="fas fa-book-open fa-fw shadow-lg no-shadow" style="color: dodgerblue"></i>
+
+                                    <span class="link-text shadow-lg no-shadow"
+                                        style="color: dodgerblue">&nbsp;&nbsp;&nbsp;News feed </span></a>
+                            </li>
+                            <br />
+
+                            <li class="nav-item pt-2 menu-button ">
+                                <a class="nav-link active text-body  " href="calender.html">
+                                    <i class="fas fa-calendar-alt fa-fw shadow-lg no-shadow"
+                                        style="color: dodgerblue"></i>
+
+                                    <span class="link-text shadow-lg no-shadow"
+                                        style="color: dodgerblue">&nbsp;&nbsp;&nbsp;Calendar </span></a>
+                            </li>
+                            <br />
+
+                            <li class="nav-item pt-2 menu-button ">
+                                <a class="nav-link active text-body  " href="http://localhost:3000/rewards">
+                                    <i class="fas fa-trophy fa-fw shadow-lg no-shadow" style="color: dodgerblue"></i>
+
+                                    <span class="link-text shadow-lg no-shadow"
+                                        style="color: dodgerblue">&nbsp;&nbsp;&nbsp;Rewards </span></a>
+                            </li>
+                            <br />
+                            <li class="nav-item pt-2 menu-button ">
+                                <a class="nav-link active text-body  " href="http://localhost:3000/pending">
+                                    <i class="fas fa-question-circle fa-fw shadow-lg no-shadow"
+                                        style="color: dodgerblue"></i>
+
+                                    <span class="link-text shadow-lg no-shadow"
+                                        style="color: dodgerblue">&nbsp;&nbsp;&nbsp;Pending </span></a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </nav>
+                <form action="" method="POST">
+                    <div class="container-fluid1">
+                        <h2><strong>PENDING REGISTRATIONS : BOOK YOUR MATCH!!</strong></h2>
+                        <table border="1" width="100%">
+                            <tr>
+
+                                <th>Match ID</th>
+                                <th>Match Date</th>
+                                <th>Match Type</th>
+                                <th>Team 1</th>
+                                <th>Team 2</th>
+                            </tr>
+                            <% for(var i=0;i<d.length;i++) { %>
+                                <tr>
+                                    <td> <%- d[i].ID %></td>
+                                    <td> <%- d[i].Date %></td>
+                                    <td> <%- d[i].Type %></td>
+                                    <td> <%- d[i].TEAM1 %></td>
+                                    <td> ? </td>
+                                </tr>
+
+                                <% } %>
+                        </table>
+                        <br>
+                        <hr><br>
+
+                        <div id="Pend">
+                            <label for="Pend"><strong>SELECT THE MATCH ID YOU WANT TO PLAY</strong></label> <br>
+                            <select name="Pend1" id="Pend1" required>
+                                <% for(var i=0;i<d.length;i++){ %>
+                                    <option value="<%- d[i].ID %>"><%- d[i].TEAM1 %> With Match ID : <%-d[i].ID %>
+                                    </option>
+                                    <% } %>
+                            </select>
+                        </div>
+                        <br>
+                        <input type="submit" class="btn" value="PROCEED">
+                        <br>
+                        <br>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
+        <!-- Footer -->
+        <footer class="footer ms-auto  bg-light" style="height: 8px">
+            <div class="container">
+                <img src="Logo2.svg" class="ml-2 rounded-circle" style="height: 65px; background-color: white;" />
+                <span class="link-text" style="color: dodgerblue; font-weight: 400;">Copyright &copy; 2024. All
+                    rights
+                    reserved. Powered by Team PlayShare
+                    <br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="privacy policy.html" style="color: dodgerblue; font-weight: 500">Terms of use & Privacy
+                        Policy</a>
+                </span>
+            </div>
+        </footer>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $("#btntogglemenu").click(function () {
+            $(".sidebar").toggleClass("collapsed ");
+
+            /*$(".menu-button").toggle();*/
+        });
+
+    </script>
+</body>
+
+</html>

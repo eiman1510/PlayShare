@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> PlayShare Login</title>
+    <style>
+        body {
+            background-color: #173367;
+            background-image: url('signup.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: center;
+            overflow: hidden;
+            /* Hide any overflowing content */
+        }
+
+        .content {
+            position: absolute;
+            top: 40%;
+            left: 56%;
+            font-size: 30px;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+        }
+
+        .container {
+            margin-top: 10px;
+        }
+
+        #submit {
+            margin-top: 2px;
+            padding: 10px 9%;
+            background-color: silver;
+            color: #173367;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        #submit:hover {
+            margin: 2px;
+            background-color: #173367;
+            color: #ccc;
+
+        }
+
+        .msg {
+            margin-top: 10px;
+            font-size: 14px;
+
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 200px;
+            border: none;
+            background-color: silver;
+            color: black;
+        }
+
+        input[type="password"] {
+            padding: 10px;
+            width: 200px;
+            border: none;
+            background-color: silver;
+            color: black;
+        }
+
+        input[type="date"] {
+            padding: 10px;
+            width: 200px;
+            border: none;
+            background-color: silver;
+            color: black;
+        }
+
+        input[type="number"] {
+            padding: 10px;
+            width: 200px;
+            border: none;
+            background-color: silver;
+            color: black;
+        }
+
+        input[type="email"] {
+            padding: 10px;
+            width: 200px;
+            border: none;
+            background-color: silver;
+            color: black;
+        }
+
+        input[type="radio"] {
+            font-size: 10px;
+        }
+
+        select {
+            padding: 10px;
+            width: 200px;
+            border: none;
+            background-color: silver;
+            color: black;
+        }
+
+        input[type="submit"].hover {
+            padding: 10px;
+            width: 200px;
+            border: none;
+            background-color: dodgerblue;
+            color: black;
+        }
+
+        .msg1 {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        @media (min-width: 768px) {
+            .content {
+                width: 60%;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .content {
+                width: 40%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" method="POST">
+        <div class="content">
+            <br>
+            <br>
+            <br>
+            <h3>User Sign-up</h3>
+            <!-- sign.ejs -->
+            <% if (s===0) { %>
+                <!-- Your HTML content for when s is 0 -->
+
+                <% } else if (s===1) { %>
+                    <script>
+                        function display(message) {
+                            console.log(message);
+                            alert(message);
+                        }
+                        display("Username already taken");
+                    </script>
+                    <% } else if (s===2) { %>
+                        <script>
+                            function display(message) {
+                                console.log(message);
+                                alert(message);
+                            }
+                            display("Gmail already taken");
+                        </script>
+                        <% } else if (s===3) { %>
+                            <script>
+                                function display(message) {
+                                    console.log(message);
+                                    alert(message);
+                                }
+                                display("User with this contact already exists");
+                            </script>
+                            <% } else { %>
+                                <script>
+                                    function display(message) {
+                                        console.log(message);
+                                        alert(message);
+                                    }
+                                    display("Unknown Error");
+                                </script>
+                                <% } %>
+
+                                    <div class="container">
+                                        <input type="text" name="fullname" placeholder="Fullname" required></input>
+                                    </div>
+                                    <div class="container">
+                                        <input type="text" name="username" placeholder="Username" required></input>
+                                    </div>
+                                    <div class="container">
+                                        <input type="password" name="password" placeholder="Password" required></input>
+                                    </div>
+                                    <div class="msg1">
+                                        <input type="radio" name="sport" value="Football" required> Football</input>
+                                        <input type="radio" name="sport" value="Cricket" required> Cricket</input>
+                                        <input type="radio" name="sport" value="Tennis" required> Tennis</input>
+                                        <input type="radio" name="sport" value="Basketball" required> Basketball</input>
+                                    </div>
+
+                                    <div class="container">
+                                        <input type="number" name="phone" placeholder="Phone number" required></input>
+                                    </div>
+                                    <div class="container">
+                                        <input type="email" name="email" placeholder="Email Address" required></input>
+                                    </div>
+
+
+                                    <p class="msg1">
+                                        Gender:
+                                        <input type="radio" name="mygender" value="M" required> M</input>
+                                        <input type="radio" name="mygender" value="F" required> F</input>
+                                    </p>
+                                    <!-- <br> -->
+                                    <!-- <a href="CommonMaster.html" id="submit">Sign up</a> -->
+                                    <input type='submit' value="Signup" id="submit"> </input>
+                                    <br>
+                                    <hr>
+                                    <p class="msg">Already have an account? Sign in to continue</p>
+                                    <!-- <br> -->
+                                    <a href="http://localhost:3000/lg" id="submit">Sign in</a>
+                                    <br>
+                                    <hr>
+                                    <p class="msg">Are you here to register for new field?</p>
+                                    <a href="http://localhost:3000/field" id="submit">Register Feild</a>
+
+
+
+        </div>
+
+    </form>
+
+</body>
+
+</html>

@@ -1,0 +1,168 @@
+/* p is a selector which fro paragraph tags in the html file  */
+/* element Selector */
+/* p{
+    color: white;
+    border: 2px solid brown;
+} */
+/* To target specific ids then use #idname */
+/* #redElement{
+    color: red;
+} */
+/* To target specific class then use .classname */
+/* .Yo{
+    background-color: gold;
+} */
+/* grouping Selector */
+/* footer,span{
+    background-color: blue;
+} */
+/* Note: id is unique hence styling to a specific item while classes can have multiple objects hence styling a range of elements */
+
+/* Developer tools */
+/* p{
+    color: pink;
+    font-style: italic;
+    background-color: rosybrown;
+} */
+/* If we go to our browser and go to inspect and options and do some changes then these changes would not alter our files however for a temporary 
+moment we can see the changes until we reload hence giving us an outlook */
+
+/* FONTS  */
+/* p{ */
+    
+    /* Specifies a prority list of fonts in which if the first not available then second would be applied etc  */
+     /* font-family:"Micro 5", sans-serif;;   */
+     /* Font size set where a pixel is  1/96th of a inch */
+     /* font-size: 23px;   */
+     /* line-height: 2.3em;  */
+    /* Spacing between multiple fonts specified by line height */
+    /* font-weight: bold; */
+    /* font-style: italic; */
+    /* } */
+/* Note: Inorder to import insert href link and then just write the font family names (use google fonts) */
+
+/* COLORS */
+/* #fp{ */
+    /*Color By name*/
+    /* color: red;   */
+/* } */
+/* #sp{ */
+    /* Color by rgb vals  */
+    /* color: rgb(0, 0, 0); */
+/* } */
+/* #tp{ */
+    /* Color by Hex val  */
+    /* color: #45c68c; */
+/* } */
+
+/* Height Width Borders */
+/* #fp{ */
+    /* color: red; */
+    /* background-color: blue; */
+    /* height: 100px; */
+    /* width: 100px; */
+    /* border-width: 10px;
+    border-color: green;
+    border-style: solid; */
+    /* If we want to write the previous 3 lines in one line we use the following line  */
+    /* border: 10px solid green; */
+    /* For rounded borders  */
+    /* border-radius: 30px; */
+/* } */
+/* #sp{ */
+    /* color: red; */
+    /* background-color: blue; */
+    /* height: 100px; */
+    /* width: 150px; */
+    /* if we want border on a specific side right,left,bottom,top then use this  */
+    /* border-top: 5px solid yellow; */
+    /* border-bottom: 2px solid red; */
+    /* border-left: 10px solid violet; */
+    /* border-right: 8px solid black; */
+    /* in the same manner we could make specific edges rounded */
+    /* border-top-left-radius: 30px; */
+/* } */
+/* #tp{ */
+    /* height: 1100px; */
+    /* width: 45500px; */
+    /* background-image: url('https://plus.unsplash.com/premium_photo-1678167657994-5b96138b6abb?q=80&w=1938&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); */
+    /* border: 2px solid red; */
+    /* The following line is for repetition of image where in x means repeats horizontally where y mean repeat vertically and no repeat means no repeat while repeat means repaet image for fitting the background  */
+    /* background-repeat: no-repeat,repeat-x,repeat-y,repeat; */
+    /* x coordinate and y coordinate  */
+    /* background-position: center top; */
+    /* background-position: 134px top;  */
+    /* for up down is top and bottom and for moving horizontally we can use right left  */
+/* } */
+
+/* Box Model  */
+
+/* Univeersal selector appllies setting to all until changes made later on to a specific element  */
+/* *{
+    box-sizing:border-box;
+    padding: 0px;
+    margin: 0px;
+} */
+
+/* Changes Color of Background */
+/* body{
+    background-color: #351378;
+} */
+
+
+
+/* .container{ */
+    /* background-color: rgb(231,230,241);
+    border: 3px solid rgb(64,6,119) ;
+    border-radius: 23px;
+    width: 533px; */
+    /* Note: padding and margin both effect width hence to make sure things remain at a fixed width we use box sizing */
+    /* box-sizing:border-box; */
+    /* Now width will be fixed */
+
+                    /* Padding  */
+    /* Padding is the distance between border and the
+    text within */
+
+    /* a single val applied on every direction  */
+    /* padding: 30px;  */
+
+    /* padding: top right bottom left; */
+    /* padding: 23px 56px 6px 78px; */
+
+    /* padding: y(top/bottom) x(left/right); */
+    /* padding: 34px 19px; */
+
+    /* Note: if we want to do padding in a specific direction
+    then we can use padding-top,padding-bottom,padding-right
+    padding-left.  */
+    /* padding-top: 20px; */
+    /* padding-bottom: 30px; */
+    /* padding-left: 10px; */
+    /* padding-right: 3px; */
+
+
+                    /* Margin  */
+    /* margin is the space outside the border hence
+    determines the distance between boxes  */
+
+    /* a single val applied on every direction  */
+    /* margin: 34px; */
+
+    /* margin: top right bottom left; */
+    /* margin: 23px 56px 6px 78px; */
+
+    /* margin: y(top/bottom) x(left/right); */
+    /* margin: 34px 19px; */
+
+    /* Note: if we want to do margin in a specific direction
+    then we can use margin-top,margin-bottom,margin-right
+    margin-left.  */
+    /* margin-top: 20px; */
+    /* margin-bottom: 30px; */
+    /* margin-left: 10px; */
+    /* margin-right: 3px; */
+/* } */
+
+
+   /* After this see lectures of vid on codewithharry site after lect 20 */

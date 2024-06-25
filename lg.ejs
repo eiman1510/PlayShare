@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head runat="server">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> PlayShare Login</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #173367;
+            background-image: url('login.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position-x: center;
+            overflow: hidden;
+            /* Hide any overflowing content */
+        }
+
+        .content {
+            position: absolute;
+            top: 68%;
+            left: 50%;
+            font-size: 30px;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+        }
+
+        .container {
+            margin-top: 10px;
+        }
+
+        #submit {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: silver;
+            color: #173367;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        #submit:hover {
+            margin: 10px;
+            background-color: #173367;
+            color: #ccc;
+        }
+
+        .msg {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 200px;
+            border: none;
+            background-color: silver;
+            color: black;
+        }
+
+        input[type="password"] {
+            padding: 10px;
+            width: 200px;
+            border: none;
+            background-color: silver;
+            color: black;
+        }
+
+        input[type="submit"] {
+            padding: 10px;
+            width: 200px;
+            border: none;
+            background-color: silver;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="" method="POST">
+                
+
+        <% if (l === 0) { %>
+            <!-- Your HTML content for when l is 0 -->
+        <% } else if (l == 2) { %>
+            <script>
+                function display(message) {
+                    console.log(message);
+                    alert(message);
+                }
+                display("Wrong username");
+            </script>
+        <% } else if (l === 1) { %>
+            <script>
+                function display(message) {
+                    console.log(message);
+                    alert(message);
+                }
+                display("Wrong password");
+            </script>
+        <% } %>
+        
+
+
+        <div class="content">
+
+            <h3>WELCOME</h3>
+            <p class="writingtype">Sign-in</p>
+            <div class="container">
+                <input type="text" name="user" placeholder="Username" required>
+            </div>
+            <div class="container">
+                <input type="password" name="pass" placeholder="Password" required>
+            </div>
+            <input type='submit' value="Sign in" id="submit"> </input>
+            <br>
+            <br>
+            <hr>
+            <p class="msg">New here? Create a new account and start connecting!</p>
+            <br>
+            <a href="http://localhost:3000/sign" id="submit">Sign Up</a>
+        </div>
+    </form>
+
+</body>
+
+</html>

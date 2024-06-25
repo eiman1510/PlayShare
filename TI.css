@@ -1,0 +1,105 @@
+.Outer-Layer {
+    background-color: #ffdb58;
+    height: 92%;
+    width: 50%;
+    position: relative;
+    border-radius: 25%;
+    border-width: 5%;
+    border-color: black;
+    border: 2px solid;
+    top: 4%;
+    left: 25%;
+    text-align: center; /* Align text in the center */
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+#heading{
+    text-align: center;
+    font-weight: bold;
+    font-style: oblique;
+    text-decoration: underline;
+    position: relative;
+    top: 10%;
+}
+.f1{
+    position: relative;
+    top: 20%;
+}
+#submit{
+    background-color: #d00e0e;
+    border-radius: 25px;
+    height: 35px;
+    width: 5vw;
+    border: 3px solid black;
+    font-style: italic;
+    box-sizing: border-box;
+    position: relative;
+    margin: auto;
+}
+#submit:hover{
+    background-color: green;
+    color: yellow;
+}
+#N1{
+    width: 35%;
+    /* background-color: black; */
+    /* color:white; */
+}
+#date{
+    position: relative;
+    right: 5%;
+}
+#Sports{
+    position: relative;
+    right: 10%;
+}
+#Participants{
+    position: relative;
+    right: 6%;
+}
+
+@media (max-width: 768px) {
+    .Outer-Layer {
+      width: 80%; /* Adjust width for smaller screens */
+      left: 10%; /* Center the box */
+    }
+    
+    .f1 {
+      text-align: center; /* Center align text */
+    }
+  
+    #submit {
+        width: 10vw; /* Adjust width */
+        left: 0; /* Align button to the left */
+        border-radius: 25px; /* Remove border radius */
+        top: auto; 
+        /* Reset top position */
+       left: 50%;
+
+    }
+    
+    /* Adjust position of specific elements */
+    #N1 {
+      width: 90%; /* Adjust width of input */
+    }
+  
+    #date {
+      position: static; /* Reset position */
+      margin-top: 20px; /* Add spacing */
+    }
+  
+    #Sports {
+      position: static; /* Reset position */
+      margin-top: 20px; /* Add spacing */
+    }
+  
+    #Participants {
+      position: static; /* Reset position */
+      margin-top: 20px; /* Add spacing */
+    }
+  }
+  #duration{
+    position: relative;
+    right: 5%;
+  }
